@@ -1,42 +1,34 @@
-var gulp,concat,minifyCss,rename,uglify,runSequence,minifyHTML,minifyIMAGE,sass,autoprefix,path,ngFilesort,ngAnnotate,
-    distDir,sassDir,jsDir,neededlibDir,htmlDir,libDir,imgDir;
+var gulp, concat, minifyCss, rename, uglify, runSequence, minifyHTML, minifyIMAGE, sass, autoprefix, path, ngFilesort, ngAnnotate,
+    distDir, sassDir, jsDir, neededlibDir, htmlDir, libDir, imgDir, shell, connect;
 gulp = require('gulp');
-
 concat = require('gulp-concat');
-
 minifyCss = require('gulp-minify-css');
-
 rename = require('gulp-rename');
-
 uglify = require('gulp-uglify');
-
 runSequence = require('run-sequence');
-
 minifyHTML = require('gulp-minify-html');
-
+shell = require('gulp-shell');
+connect = require('gulp-connect');
 //minifyIMAGE = require('gulp-imagemin');
-
 sass = require('gulp-sass');
-
 autoprefix = require('gulp-autoprefixer');
-
 path = require('path');
-
 ngFilesort = require('gulp-angular-filesort');
-
 ngAnnotate = require('gulp-ng-annotate');
-
 distDir = './jackblog/dist/';
 
-sassDir =[ 'jackblog/src/*.scss'];
+sassDir = ['jackblog/src/*.scss'];
+sassWatchDir = ['jackblog/src/**/*.scss'];
 
-jsDir = [ 'jackblog/src/app/**/*.js', 'jackblog/src/common/**/*.js', 'jackblog/src/*.js',  'jackblog/src/app/**/*.js'];
+jsDir = ['jackblog/src/app/**/*.js', 'jackblog/src/common/**/*.js', 'jackblog/src/*.js', 'jackblog/src/app/**/*.js'];
 
 neededlibDir = ['jackblog/src/lib/angular.js', 'jackblog/src/lib/angular-ui-router.js'];
 
 htmlDir = 'jackblog/src/*.html';
 
 libDir = 'jackblog/src/lib/**/*.*';
+
+
 
 //imgDir = 'jackblog/img/**/*.*';
 
@@ -51,7 +43,7 @@ gulp.task('dist:sass', function () {
         browsers: ['FireFox <= 20', 'last 2 versions']
     })).pipe(rename({
         basename: 'index.min'
-    })).pipe(gulp.dest(distDir+'css/'));
+    })).pipe(gulp.dest(distDir + 'css/'));
 });
 
 gulp.task('dist:js', function () {
@@ -60,8 +52,8 @@ gulp.task('dist:js', function () {
         .pipe(concat('index.js'))
         .pipe(ngAnnotate())
         .pipe(rename({
-        basename: 'index.min'
-    })).pipe(gulp.dest(distDir+'js/'));
+            basename: 'index.min'
+        })).pipe(gulp.dest(distDir + 'js/'));
 });
 
 gulp.task('dist:lib.js', function () {
@@ -69,8 +61,8 @@ gulp.task('dist:lib.js', function () {
         .pipe(concat('lib.js'))
         .pipe(ngAnnotate())
         .pipe(rename({
-        basename: 'lib.min'
-    })).pipe(gulp.dest(distDir+'js/'));
+            basename: 'lib.min'
+        })).pipe(gulp.dest(distDir + 'js/'));
 });
 /*
 gulp.task('dist:img', function () {
@@ -84,21 +76,22 @@ gulp.task('dist:html', function () {
 });
 
 gulp.task('dist:lib', function () {
-    return gulp.src(libDir).pipe(gulp.dest(distDir+'lib/'));
+    return gulp.src(libDir).pipe(gulp.dest(distDir + 'lib/'));
 });
 
 gulp.task('watch', function () {
-    gulp.watch(sassDir, ['dist:sass']);
+    gulp.watch(sassWatchDir, ['dist:sass']);
 
-    gulp.watch(jsDir,['dist:js']);
+    gulp.watch(jsDir, ['dist:js']);
 
-     gulp.watch(htmlDir, ['dist:html']);
+    gulp.watch(htmlDir, ['dist:html']);
 
+    gulp.watch([htmlDir,sassWatchDir,jsDir], ['html']);
     //gulp.watch(imgDir,['dist:img']);
 });
 
 gulp.task('minHtml', function () {
-   return  gulp.src(['dist/**/*.html'], {
+    return gulp.src(['dist/**/*.html'], {
         base: 'dist/'
     }).pipe(minifyHTML()).pipe(gulp.dest(distDir));
 });
@@ -110,17 +103,30 @@ gulp.task('minJs', function () {
 });
 
 //gulp.task('minImg', function () {
-   // return gulp.src('dist/img/**/*.*', {
-       // base: 'dist/'
-   // }).pipe(minifyIMAGE({
-   //     optimizationLevel: 5,
-      //  progressive: true,
-     //   interlaced: true
-  //  })).pipe(gulp.dest(distDir));
+// return gulp.src('dist/img/**/*.*', {
+// base: 'dist/'
+// }).pipe(minifyIMAGE({
+//     optimizationLevel: 5,
+//  progressive: true,
+//   interlaced: true
+//  })).pipe(gulp.dest(distDir));
 //});
 
+gulp.task('connect', function () {
+    connect.server({
+        port: 80,
+        root: 'jackblog/dist',
+        livereload: true
+    });
+});
+
+gulp.task('html', function () {
+    gulp.src('jackblog/dist/*.html')
+        .pipe(connect.reload());
+});
+
 gulp.task('dist', function (cb) {
-    return runSequence('dist:sass', 'dist:lib.js', 'dist:js',  'dist:html', 'dist:lib', cb);
+    return runSequence('dist:sass', 'dist:lib.js', 'dist:js', 'dist:html', 'dist:lib', 'connect', cb);
 });
 
 gulp.task('default', function (cb) {

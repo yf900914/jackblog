@@ -12,3 +12,8 @@ angular.module('app.topicdetail.controller',['app.topicdetail.directive.topicdet
          return $scope.topicdetail = data;
     });
 })
+.filter('htmlContent',['$sce', function($sce) {
+	return function(input) {
+		return $sce.trustAsHtml(input);
+	}
+}]);

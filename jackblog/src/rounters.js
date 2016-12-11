@@ -1,6 +1,6 @@
-angular.module('app.routes',['ui.router']).config(function($stateProvider,$httpProvider){
+angular.module('app.routes',['ui.router']).config(function($stateProvider,$httpProvider,$urlRouterProvider){
     $httpProvider.defaults.headers.common["X-Requested-With"]='XMLHttpRequest';
-    return $stateProvider.state('search',{
+    $stateProvider.state('search',{
         url:'/search',
         template:'<topic-list></topic-list>',
         controller:'listController'
@@ -9,4 +9,6 @@ angular.module('app.routes',['ui.router']).config(function($stateProvider,$httpP
         template:'<topic-detail></topic-detail>',
         controller:'detailController'
     });
+    $urlRouterProvider.when('/', '/search')
+	$urlRouterProvider.otherwise('/search') 
 });
