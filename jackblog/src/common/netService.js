@@ -3,7 +3,7 @@ angular.module('common.netService', [])
         host:"https://cnodejs.org"
     })
     .constant("apiUrl", {
-        getTopic: '/api/v1/topics?callback=JSON_CALLBACK/get',
+        getTopic: '/api/v1/topic',
         searchTopic: '/api/v1/topics?callback=JSON_CALLBACK/search',
         addTopic: '/topic/add',
         deleteTopic: '/topic/delete'
@@ -14,25 +14,31 @@ angular.module('common.netService', [])
     fn = function (url) {
         return $this[url] = function (method, data) {
             var opts;
-            if (method.toLowerCase() === 'get' || method === 'delete') {
+            if('string'===typeof data){
+                opts = {
+                    method: 'get',
+                    url: config.host+apiUrl[url]+'/'+data,
+                };
+            } 
+            else if (method.toLowerCase() === 'get' || method === 'delete') {
                 opts = {
                     method: method,
                     url: config.host+apiUrl[url],
                     params: data
                 };
-            } else if(method.toLowerCase()=='post'){
+            }else if(method.toLowerCase() === 'jsonp'){
+                opts = {
+                    method:method,
+                    url: config.host+apiUrl[url],
+                    params:{callback:'JSON_CALLBACK'}
+                }
+            }  else{
                 opts = {
                     method: method,
                     url: config.host+apiUrl[url],
                     data: data
                 };
-            } else {
-                opts ={
-                    method:jsonp,
-                    url:config.host+apiUrl[url],
-                    params:{callback:'JSON_CALLBACK'}
-                }
-            }
+            } 
             return $http(opts);
         };
     };

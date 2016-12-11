@@ -28,7 +28,7 @@ ngAnnotate = require('gulp-ng-annotate');
 
 distDir = './jackblog/dist/';
 
-sassDir = 'jackblog/src/**/*.scss';
+sassDir =[ 'jackblog/src/*.scss'];
 
 jsDir = [ 'jackblog/src/app/**/*.js', 'jackblog/src/common/**/*.js', 'jackblog/src/*.js',  'jackblog/src/app/**/*.js'];
 
@@ -47,7 +47,7 @@ handleError = function (err) {
 };
 
 gulp.task('dist:sass', function () {
-    return gulp.src('jackblog/src/*.scss').pipe(sass()).on('error', handleError).pipe(autoprefix({
+    return gulp.src(sassDir).pipe(sass()).on('error', handleError).pipe(autoprefix({
         browsers: ['FireFox <= 20', 'last 2 versions']
     })).pipe(rename({
         basename: 'index.min'

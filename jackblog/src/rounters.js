@@ -7,6 +7,6 @@ angular.module('app.routes',['ui.router']).config(function($stateProvider,$httpP
     }).state('detail',{
         url:'/detail/:id',
         template:'<topic-detail></topic-detail>',
-        contoller:'detailController'
+        controller:'detailController'
     });
 });

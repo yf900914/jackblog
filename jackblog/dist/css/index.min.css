@@ -1,0 +1,60 @@
+.page-top {
+  height: 100px;
+  line-height: 100px; }
+  .page-top .nav-con {
+    height: 100px;
+    font-size: 40px;
+    list-style: none;
+    margin: 10px 0;
+    padding: 0;
+    background-color: #f1f1f1; }
+    .page-top .nav-con li {
+      list-style: none;
+      margin: 0 10px;
+      padding: 0 20px;
+      float: left;
+      -moz-border-radius: 5px;
+           border-radius: 5px;
+      background-color: #FA8072; }
+
+.load-more {
+  text-align: center;
+  margin: 100px 0; }
+  .load-more .load-btn {
+    background-color: #FA8072;
+    height: 80px;
+    width: 300px;
+    -moz-border-radius: 3px;
+         border-radius: 3px;
+    margin: auto;
+    padding: 10px 5px;
+    font-size: 40px;
+    color: white;
+    line-height: 80px; }
+
+.topic-con {
+  width: 100%;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
+  line-height: 1.5em; }
+  .topic-con .list-top {
+    margin: 20px 0;
+    font-size: 14px; }
+  .topic-con .title {
+    margin: 50px 0;
+    font-size: 40px; }
+    .topic-con .title .link-title {
+      line-height: 55px; }
+  .topic-con span {
+    margin: 0 10px;
+    font-size: 14px; }
+
+a:link {
+  color: #000;
+  text-decoration: none; }
+
+a:visited {
+  color: #000;
+  text-decoration: none; }
