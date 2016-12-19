@@ -1,60 +1,157 @@
+html, body {
+  font-size: 16px; }
+
 .page-top {
-  height: 100px;
-  line-height: 100px; }
+  height: 1.5rem;
+  line-height: 1.5rem; }
   .page-top .nav-con {
-    height: 100px;
-    font-size: 40px;
+    height: 1.5rem;
+    font-size: 0.5rem;
     list-style: none;
-    margin: 10px 0;
+    margin: 0.5rem 0;
     padding: 0;
     background-color: #f1f1f1; }
     .page-top .nav-con li {
       list-style: none;
-      margin: 0 10px;
-      padding: 0 20px;
+      margin: 0 0.2rem;
+      padding: 0 0.5rem;
       float: left;
       -moz-border-radius: 5px;
            border-radius: 5px;
-      background-color: #FA8072; }
+      background-color: #FA8072;
+      color: white; }
+
+.topiclist {
+  width: 100%; }
 
 .load-more {
   text-align: center;
-  margin: 100px 0; }
+  margin: 1rem 0; }
   .load-more .load-btn {
     background-color: #FA8072;
-    height: 80px;
-    width: 300px;
+    height: 1.5rem;
+    width: 7rem;
     -moz-border-radius: 3px;
          border-radius: 3px;
     margin: auto;
-    padding: 10px 5px;
-    font-size: 40px;
+    padding: 0.5rem 0.3rem;
+    font-size: 1rem;
     color: white;
-    line-height: 80px; }
+    line-height: 1.5rem; }
 
 .topic-con {
   width: 100%;
-  margin-bottom: 30px;
-  padding-bottom: 30px;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
   border-bottom-width: 1px;
   border-bottom-style: dashed;
   line-height: 1.5em; }
   .topic-con .list-top {
-    margin: 20px 0;
-    font-size: 14px; }
+    margin: 0.5rem 0;
+    font-size: 0.5rem; }
   .topic-con .title {
-    margin: 50px 0;
-    font-size: 40px; }
+    margin: 0 0;
+    font-size: 1rem; }
     .topic-con .title .link-title {
-      line-height: 55px; }
+      line-height: 1rem; }
   .topic-con span {
     margin: 0 10px;
     font-size: 14px; }
+  .topic-con a:link {
+    color: #000;
+    text-decoration: none; }
+  .topic-con a:visited {
+    color: #000;
+    text-decoration: none; }
 
-a:link {
-  color: #000;
-  text-decoration: none; }
+.page-con {
+  width: 100%;
+  border-bottom-width: 1px;
+  border-bottom-style: solid; }
+  .page-con .pageheader {
+    width: 100%;
+    margin: 2rem 0; }
+    .page-con .pageheader .topic-title {
+      font-size: 1.5 rem;
+      font-weight: 900;
+      padding: 1rem;
+      float: left; }
+    .page-con .pageheader .topicinfo {
+      margin: 0 1rem; }
+      .page-con .pageheader .topicinfo span {
+        margin: 0 0.3rem;
+        font-size: 0.6rem; }
+  .page-con .topicdetail-con a {
+    text-decoration: none;
+    color: #08c; }
+  .page-con .topicdetail-con a:visited {
+    color: #08c; }
+  .page-con .topicdetail-con .markdown-text p {
+    margin: 0 0;
+    line-height: 1.2rem;
+    font-size: 0.8rem;
+    padding: 0 0.5rem; }
+  .page-con .topicdetail-con .markdown-text .prettyprint {
+    font-size: 0.6rem; }
+  .page-con .topicdetail-con .markdown-text ul {
+    font-size: 0.8rem; }
+  .page-con .topicdetail-con img {
+    max-width: 100%; }
+  .page-con .comment-con {
+    width: 100%; }
+    .page-con .comment-con .comment-header {
+      border-top-width: 1px;
+      border-top-style: solid;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      line-height: 3rem;
+      font-size: 0.7rem;
+      margin: 0 10px; }
+    .page-con .comment-con .comment-info {
+      width: 100%;
+      border-bottom-width: 1px;
+      border-bottom-style: solid; }
+      .page-con .comment-con .comment-info .user-info {
+        margin: 0.3rem 0.3rem; }
+        .page-con .comment-con .comment-info .user-info .avatar img {
+          width: 2.5rem;
+          height: 2.5rem; }
+        .page-con .comment-con .comment-info .user-info a {
+          margin: 0 0;
+          display: inline-block;
+          position: relative;
+          font-size: 0.8rem;
+          text-decoration: none;
+          color: #08c; }
+        .page-con .comment-con .comment-info .user-info a:visited {
+          color: #08c; }
+        .page-con .comment-con .comment-info .user-info .user-name {
+          top: -1.5rem; }
+      .page-con .comment-con .comment-info .common-content {
+        margin: 0 10px; }
+      .page-con .comment-con .comment-info .markdown-text p {
+        word-wrap: break-word;
+        word-break: normal;
+        margin-left: 0.3rem;
+        font-size: 0.8rem; }
+        .page-con .comment-con .comment-info .markdown-text p img {
+          max-width: 100%; }
+        .page-con .comment-con .comment-info .markdown-text p a {
+          text-decoration: none;
+          color: #08c; }
+        .page-con .comment-con .comment-info .markdown-text p a:visited {
+          color: #08c; }
 
-a:visited {
-  color: #000;
-  text-decoration: none; }
+.tag-con {
+  width: 2rem;
+  height: 2rem;
+  position: fixed;
+  right: 0;
+  bottom: 0; }
+  .tag-con i:hover {
+    opacity: 1; }
+  .tag-con i {
+    font-size: 2rem;
+    opacity: 0.5; }
+  .tag-con .fa .fa-arrow-circle-up {
+    font-size: 2rem; }

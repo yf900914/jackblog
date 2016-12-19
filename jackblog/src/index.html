@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
+
 <head>
     <meta charset="UTF-8">
     <title ng-model="title">title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet " href="css/index.min.css" />
 </head>
+
 <body>
-    <div ui-view class="wrapper" id="wrapper"></div>
+    <div ui-view scroll class="wrapper" id="wrapper"></div>
+    <script src="js/lib.min.js"></script>
+    <script src="js/index.min.js" defer></script>
 </body>
-<link rel="stylesheet " href="css/index.min.css">
-<script src="js/lib.min.js"></script>
-<script src="js/index.min.js" defer></script>
+
 </html>

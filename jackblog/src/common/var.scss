@@ -1,0 +1,6 @@
+html,body{
+    font-size:16px;
+}
+@function ptr($px) {
+  @return $px / 40 * 1rem;
+}

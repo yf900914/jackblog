@@ -114,7 +114,7 @@ gulp.task('minJs', function () {
 
 gulp.task('connect', function () {
     connect.server({
-        port: 80,
+        port: 8080,
         root: 'jackblog/dist',
         livereload: true
     });

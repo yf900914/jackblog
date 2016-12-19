@@ -16,3 +16,21 @@ angular.module('app.common.factory', []).factory('transferData', function () {
         get: get
 };
 });
+
+var calWinsize=function(doc,win){
+    var  docEl=doc.documentElement;
+    var recal=function(){
+        if (docEl.clientWidth<=320){
+            clientWidth=320;
+        }else if(docEl.clientWidth>=640){
+            clientWidth=640;
+        }
+        else {
+            clientWidth=docEl.clientWidth;
+        }
+        docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+		doc.body.style.fontSize = 20 * (clientWidth / 320) + 'px';
+    }
+    recal();
+    doc.addEventListener('DOMContentLoaded', recal, true);
+}
